@@ -11,7 +11,6 @@ function PieChart(x, y, diameter) {
 
     for (let i = 0; i < data.length; i++) {
       radians.push((data[i] / total) * TWO_PI);
-      console.log(radians);
     }
 
     return radians;

@@ -36,7 +36,7 @@ function TechDiversityGender() {
 
   // Default visualisation colours.
   this.femaleColour = color(255, 0 ,0);
-  this.maleColour = color(0, 255, 0);
+  this.maleColour = color(0, 0, 255);
 
   // Property to represent whether data has been loaded.
   this.loaded = false;
@@ -52,6 +52,7 @@ function TechDiversityGender() {
       function(table) {
         self.loaded = true;
       });
+
 
   };
 
@@ -77,16 +78,14 @@ function TechDiversityGender() {
 
     // Loop over every row in the data.
     for (var i = 0; i < this.data.getRowCount(); i++) {
-
       // Calculate the y position for each company.
       var lineY = (lineHeight * i) + this.layout.topMargin;
 
       // Create an object that stores data from the current row.
       var company = {
-        // Convert strings to numbers.
-        // 'name': ???
-        // 'female': ???
-        // 'male': ???
+        'name':this.data.getString(i, "company"),
+        'female':this.data.getNum(i, "female"),
+        'male':this.data.getNum(i, "male"),
       };
 
       // Draw the company name in the left margin.
@@ -105,7 +104,11 @@ function TechDiversityGender() {
            lineHeight - this.layout.pad);
 
       // Draw male employees rectangle.
-      // ???
+      fill(this.maleColour);
+      rect(this.layout.leftMargin + this.mapPercentToWidth(company.female),
+        lineY, 
+        this.mapPercentToWidth(company.male),
+        lineHeight - this.layout.pad);
     }
 
     // Draw 50% line
