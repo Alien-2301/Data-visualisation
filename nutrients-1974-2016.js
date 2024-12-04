@@ -221,8 +221,6 @@ function NutrientsTimeSeries(){
                         //draw the nutrients label
                         textAlign('right')
                         noStroke();
-                        //fill(this.colors[i]);
-                        //text(title, 100, this.mapNutrientsToHeight(current.percentage));
                         this.makeLegendsItem(title, i, this.colors[i]);
 
                     }
