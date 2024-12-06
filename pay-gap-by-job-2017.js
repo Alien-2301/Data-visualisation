@@ -73,16 +73,37 @@ function PayGapByJob2017() {
     var numJobsMin = min(numJobs);
     var numJobsMax = max(numJobs);
 
+
+    //Labels
+    var label_x = width + this.pad;
+    var label_y = height - this.pad;
+    textAlign(CENTER, CENTER);
+
+    //labels for the scale
+    fill(0);
+    text('PayGapMax', label_x/2, label_y);
+    text('PayGapMin', label_x/2, this.pad);
+    text('FemaleMax', label_x, label_y/2);
+    text('FemaleMin', this.pad, label_y/2);
+
+    //origin indiciator
+    var origin_x = (width+10)/2;
+    var origin_y = (height+10)/2;
+    textAlign(LEFT, TOP);
+    text('0', origin_x, origin_y, height/8, width/2);
+    noFill();
+    
+
     fill(255);
     stroke(0);
     strokeWeight(1);
 
     for (i = 0; i < this.data.getRowCount(); i++) {
       // Draw an ellipse for each point.
-      var x = map(propFemale[i], propFemaleMin, propFemaleMax, this.pad,)
-      ellipse(
-
-      );
+      var x = map(propFemale[i], propFemaleMin, propFemaleMax, this.pad, width - this.pad);
+      var y = map(payGap[i], payGapMin, payGapMax, height - this.pad, this.pad);
+      var diameter = map(numJobs[i], numJobsMin, numJobsMax, this.dotSizeMin, this.dotSizeMax);
+      ellipse(x, y, diameter, diameter);
     }
   };
 
