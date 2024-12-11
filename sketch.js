@@ -13,13 +13,14 @@ function setup() {
   gallery = new Gallery();
 
   // Add the visualisation objects here.
-  currentApp = new NutrientsTimeSeries();
-  gallery.addVisual(currentApp);
+  currentApp = new WaffleChart();
+  gallery.addVisual(new NutrientsTimeSeries());
   gallery.addVisual(new TechDiversityRace());
   gallery.addVisual(new TechDiversityGender());
   gallery.addVisual(new PayGapByJob2017());
   gallery.addVisual(new PayGapTimeSeries());
   gallery.addVisual(new ClimateChange());
+  gallery.addVisual(currentApp);
 }
 
 function draw() {
